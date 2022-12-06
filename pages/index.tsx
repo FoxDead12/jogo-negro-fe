@@ -1,4 +1,3 @@
-import AdminPanelLayout from "../layouts/AdminPanel";
 
 export default function Home() {
   return (
