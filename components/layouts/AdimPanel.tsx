@@ -5,11 +5,16 @@ import { MdWorkOutline } from "react-icons/md";
 import { ImExit } from "react-icons/im";
 import { GiWeightLiftingUp } from "react-icons/gi";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function AdimPanel ({children}: any) {
     return (
 
         <>
+            <Head>
+                <title>Painel</title>
+                <link rel="icon" type="image/x-icon" href="/panel.ico"></link>
+            </Head>
             <div className="w-screen h-screen grid grid-cols-[200px_minmax(0px,_1fr)_0px]">
                 <div className="bg-gray-800">
                     <h1 className="pt-4 pb-2 pl-5 text-lg uppercase font-bold text-white">Jogo de Negro</h1>

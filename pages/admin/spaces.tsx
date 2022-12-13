@@ -6,8 +6,9 @@ import { BiBuildingHouse, BiEnvelope, BiImageAlt, BiTrashAlt } from "react-icons
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { CgRename } from "react-icons/cg";
 import { GrLocation } from "react-icons/gr";
-import AdimPanel from "../../layouts/AdimPanel";
+import AdimPanel from "../../components/layouts/AdimPanel";
 import Loader from "../../components/Loader";
+import FileManager from "../../components/FIleManager";
 
 
 export default function Spaces ({data, erro, url}: any) {
@@ -22,7 +23,7 @@ export default function Spaces ({data, erro, url}: any) {
     return (
         <>
             {erro && <h1>ERROR: {erro.message}</h1>}
-            {createMenu && <Add close={closeCreateMenu}/>}
+            {createMenu && <Add close={closeCreateMenu} mainUrl={url}/>}
             <AdimPanel>
                                     
                 {/* Header */}
@@ -60,7 +61,7 @@ function Table({data, mainUrl}: any) {
     useEffect(() => {
 
         const arrayTemp: any = [];
-        data.forEach((space: any, i: number) => {
+        data?.forEach((space: any, i: number) => {
 
             if(i >= min && i <= max) {
                 arrayTemp.push(space);
@@ -68,7 +69,6 @@ function Table({data, mainUrl}: any) {
         });
 
         setSpaces(arrayTemp);
-        
     }, [data, min])
 
     const onClickLeft = () => {
@@ -180,6 +180,13 @@ function Menu({data, close, mainUrl}: any) {
 
     const router = useRouter();
     const [load, setLoad] = useState(false);
+    const [chooseFile, setChooseFile] = useState(false);
+    const [image, setImage] = useState<any>("");
+
+    useEffect(() => {
+
+        setImage(data.imageUrl);
+    }, [data])
 
     const onFormSubmit = async (e: FormEvent) => {
 
@@ -193,7 +200,7 @@ function Menu({data, close, mainUrl}: any) {
             body: JSON.stringify({
                 name: target.elements.name.value,
                 location: target.elements.location.value,
-                imageUrl: target.elements.image.value,
+                imageUrl: image,
                 mapsUrl: target.elements.maps.value,
                 active: target.elements.active.checked,
                 id: data._id
@@ -219,9 +226,19 @@ function Menu({data, close, mainUrl}: any) {
         setLoad(false);
     }
 
+    const reciveImageChoose = (url: string) => {
+
+        setImage(url)
+    }
+
+    const closeFileMenu = () => {
+        setChooseFile(false)
+    }
+
     return (
         <>
             {load && <Loader />}
+            {chooseFile && <FileManager returnLink={reciveImageChoose} close={closeFileMenu} ></FileManager>}
             <div className="fixed left-0 top-0 w-screen h-screen flex items-center justify-center bg-gray-900 bg-opacity-50 z-[100]">
                     <div className="relative bg-white p-4 shadow-md rounded-md max-w-[350px]">
                         <div onClick={close} className="absolute right-0 top-0 w-8 h-8 bg-white rounded-full flex items-center justify-center translate-x-[50%] -translate-y-[50%] cursor-pointer hover:rotate-[360deg] text-gray-400 hover:text-red-500 duration-500"><AiOutlineCloseCircle className="h-7 w-7 rounded-full"/></div>
@@ -241,7 +258,8 @@ function Menu({data, close, mainUrl}: any) {
 
                             <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
                                 <BiImageAlt className="text-2xl text-gray-900 opacity-25 stroke-none " />
-                                <input type="url" name="image" id="image" placeholder="Imagem" defaultValue={data.imageUrl} className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
+                                <input type="url" readOnly onClick={() => setChooseFile(true)} name="image" id="image" placeholder="Imagem" defaultValue={image} className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
+
                             </div>
 
                             <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
@@ -317,9 +335,12 @@ function Delete({data, close, mainUrl}: any) {
 }
 
 //Criar Espaço
-function Add({close}: any) {
+function Add({close, mainUrl}: any) {
 
-    const [image, setImage] = useState<any>(null);
+    const router = useRouter();
+    const [image, setImage] = useState<any>("");
+    const [chooseFile, setChooseFile] = useState(false);
+    const [load, setLoad] = useState(false);
 
     const changeImage = (e: ChangeEvent) => {
 
@@ -331,46 +352,98 @@ function Add({close}: any) {
         }
     }
 
+    // Files Menu
+    const reciveImageChoose = (url: string) => {
+
+        setImage(url)
+    }
+
+    const closeFileMenu = () => {
+        setChooseFile(false)
+    }
+
+    const addItem = async (e: FormEvent) => {
+        e.preventDefault();
+
+        setLoad(true);
+
+        const target = e.target as any;
+
+        const result = await fetch(mainUrl + '/spaces', {
+            method: "POST",
+            body: JSON.stringify({
+                name: target.elements.name.value,
+                location: target.elements.location.value,
+                imageUrl: image,
+                mapsUrl: target.elements.maps.value,
+                active: target.elements.active.checked,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": "true"
+            },
+            credentials: "include"
+        })
+        
+        
+        if(result.status === 201) {
+            console.log("SUCESS")
+        }
+        else {
+            const data = await result.json();
+            console.log(data.message)
+        }  
+
+        router.push('')
+        setLoad(false);
+    }
+
     return (
-        <div className="fixed left-0 top-0 w-screen h-screen flex items-center justify-center bg-gray-900 bg-opacity-50 z-[100]">
-            <div className="relative bg-white p-4 shadow-md rounded-md w-full max-w-[350px]">
-                <div onClick={close} className="absolute right-0 top-0 w-8 h-8 bg-white rounded-full flex items-center justify-center translate-x-[50%] -translate-y-[50%] cursor-pointer hover:rotate-[360deg] text-gray-400 hover:text-red-500 duration-500"><AiOutlineCloseCircle className="h-7 w-7 rounded-full"/></div>
-                <h1 className="text-xl mb-8 text-center">Adicionar Espaço de Treino</h1>
+        <>
+            {chooseFile && <FileManager returnLink={reciveImageChoose} close={closeFileMenu} ></FileManager>}
+            {load && <Loader />}
 
-                <form onSubmit={() => {}} className="flex flex-col">
-                    {/* {error != "" && <h1 className="mb-4 text-center font-normal uppercase text-red-500">ERRO: {error}</h1>} */}
-                    <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
-                        <CgRename className="text-2xl text-gray-900 opacity-25 stroke-none " />
-                        <input type="text" name="name" id="name" placeholder="Nome" className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
-                    </div>
+            <div className="fixed left-0 top-0 w-screen h-screen flex items-center justify-center bg-gray-900 bg-opacity-50 z-[100]">
+                <div className="relative bg-white p-4 shadow-md rounded-md w-full max-w-[350px]">
+                    <div onClick={close} className="absolute right-0 top-0 w-8 h-8 bg-white rounded-full flex items-center justify-center translate-x-[50%] -translate-y-[50%] cursor-pointer hover:rotate-[360deg] text-gray-400 hover:text-red-500 duration-500"><AiOutlineCloseCircle className="h-7 w-7 rounded-full"/></div>
+                    <h1 className="text-xl mb-8 text-center">Adicionar Espaço de Treino</h1>
 
-                    <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
-                        <BiBuildingHouse className="text-2xl text-gray-900 opacity-25 stroke-none " />
-                        <input type={"text"} name="location" id="location" placeholder="Localização" className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
-                    </div>
+                    <form onSubmit={addItem} className="flex flex-col">
+                        {/* {error != "" && <h1 className="mb-4 text-center font-normal uppercase text-red-500">ERRO: {error}</h1>} */}
+                        <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
+                            <CgRename className="text-2xl text-gray-900 opacity-25 stroke-none " />
+                            <input type="text" name="name" id="name" placeholder="Nome" className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
+                        </div>
 
-                    <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
-                        <BiImageAlt className="text-2xl text-gray-900 opacity-25 stroke-none " />
-                        {/* <input type="url" name="image" id="image" placeholder="Imagem" className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/> */}
-                        <input type="file" onChange={changeImage} name="image" id="image" placeholder="Image" hidden/>
-                        <label htmlFor="image" className={`w-full outline-none pl-2 text-base font-light ${image != null ? "text-gray-900" : "text-gray-400"}`}>{image != null ? image.name.toString(): 'Image'}</label>
-                    </div>
+                        <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
+                            <BiBuildingHouse className="text-2xl text-gray-900 opacity-25 stroke-none " />
+                            <input type={"text"} name="location" id="location" placeholder="Localização" className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
+                        </div>
 
-                    <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
-                        <GrLocation className="text-2xl text-gray-900 opacity-25 stroke-none" />
-                        <input type="url" name="maps" id="maps" placeholder="Maps" className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
-                    </div>
+                        <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
+                            <BiImageAlt className="text-2xl text-gray-900 opacity-25 stroke-none " />
+                            {/* <input type="file" onChange={changeImage} name="image" id="image" placeholder="Image" hidden/> */}
+                            <input type="url" readOnly onClick={() => setChooseFile(true)} name="image" id="image" placeholder="Imagem" defaultValue={image} className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
+                            {/* <label htmlFor="image"  className={`max-h-full max-w-full outline-none pl-2 text-[60%] font-light overflow-hidden ${image != null ? "text-gray-900" : "text-gray-400"}`}>{image != null ? image.toString(): 'Image'}</label> */}
+                        </div>
 
-                    <div className="flex items-center bg-opacity-80 m-0 p-3 rounded-full">
-                        <input type="checkbox" name="active" id="active" defaultChecked={false} />
-                        <h5 className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light">Mostar Item?</h5>
-                    </div>
+                        <div className="flex items-center bg-gray-100 bg-opacity-80 my-2 p-3 rounded-full">
+                            <GrLocation className="text-2xl text-gray-900 opacity-25 stroke-none" />
+                            <input type="url" name="maps" id="maps" placeholder="Maps" className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light"/>
+                        </div>
 
-                    <input type="submit" value="Criar" className="bg-blue-500 p-3 rounded-full text-white uppercase text-sm mt-4 cursor-pointer hover:bg-blue-600 duration-300 transition-all "/>
-                    <h5 className="text-xs text-center mt-4 text-gray-500 "></h5>
-                </form>
+                        <div className="flex items-center bg-opacity-80 m-0 p-3 rounded-full">
+                            <input type="checkbox" name="active" id="active" defaultChecked={false} />
+                            <h5 className="autofill:bg-transparent bg-transparent border-none outline-none pl-2 text-base font-light">Mostar Item?</h5>
+                        </div>
+
+                        <input type="submit" value="Criar" className="bg-blue-500 p-3 rounded-full text-white uppercase text-sm mt-4 cursor-pointer hover:bg-blue-600 duration-300 transition-all "/>
+                        <h5 className="text-xs text-center mt-4 text-gray-500 "></h5>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

@@ -1,6 +1,6 @@
 import Router from "next/router";
 import { Context } from "vm";
-import AdimPanel from "../../layouts/AdimPanel";
+import AdimPanel from "../../components/layouts/AdimPanel";
 
 export default function Users () {
 

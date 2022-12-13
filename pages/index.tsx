@@ -1,7 +1,7 @@
+import FileManager from "../components/FIleManager";
 
 export default function Home() {
   return (
-
-    <h1 className="">BEM-VINDO AO SITE DO JOGO DE NEGRO</h1>
+    <h1>JOGO DE NEGRO</h1>
   )
 }
