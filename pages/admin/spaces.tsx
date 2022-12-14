@@ -1,8 +1,8 @@
 import { Context } from "vm";
 import { useRouter } from 'next/router';
 import { MdDone } from "react-icons/md";
-import { AiOutlineClose, AiOutlineEye, AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineUser, AiOutlineCloseCircle } from "react-icons/ai";
-import { BiBuildingHouse, BiEnvelope, BiImageAlt, BiTrashAlt } from "react-icons/bi";
+import { AiOutlineClose, AiOutlineEye, AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineCloseCircle } from "react-icons/ai";
+import { BiBuildingHouse, BiImageAlt, BiTrashAlt } from "react-icons/bi";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { CgRename } from "react-icons/cg";
 import { GrLocation } from "react-icons/gr";

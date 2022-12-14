@@ -1,13 +1,15 @@
-import Router from "next/router";
 import { Context } from "vm";
 import AdimPanel from "../../components/layouts/AdimPanel";
+import { FaSadTear } from "react-icons/fa";
 
 export default function Home () {
 
     return (
         <AdimPanel>
 
-            <h1>HOME</h1>
+            <div className="flex w-full h-full items-center justify-center">
+                <h1 className="flex items-center justify-center text-xl bg-white p-4 rounded-sm shadow-sm tracking-wider">PAGE NOT IMPLEMENTE WET <FaSadTear className="text-blue-500 w-8 h-8 ml-4"/></h1>
+            </div>
 
         </AdimPanel>
     )

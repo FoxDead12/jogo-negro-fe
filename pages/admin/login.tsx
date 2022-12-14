@@ -7,7 +7,6 @@ import Loader from "../../components/Loader";
 export default function Login() {
     
     const router = useRouter();
-    const [cookies, setCookie] = useCookies(['token']);
 
     //Loader Controller
     const [load, setLoad] = useState(false);

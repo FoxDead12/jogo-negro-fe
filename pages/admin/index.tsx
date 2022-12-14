@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { Context } from "vm";
 
 export default function Index() {

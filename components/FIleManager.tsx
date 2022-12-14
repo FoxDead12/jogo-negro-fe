@@ -4,9 +4,12 @@ import { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FiUpload } from "react-icons/fi";
 
+const url = "http://localhost:3301";
+
 const myLoader = ({ src, width, quality }: any) => {
-    return `http://localhost:3301/uploads/${src}?w=${width}&q=${quality || 75}`
+    return `${url}/uploads/${src}?w=${width}&q=${quality || 75}`
 }
+
 
 export default function FileManager({returnLink, close}: any) {
 
@@ -55,11 +58,10 @@ export default function FileManager({returnLink, close}: any) {
         const target = e.target as any;
         const files = target.files;
 
-        console.log(files)
         const formData = new FormData();
         formData.append('image', files[0]);
 
-        const rs = await fetch('http://localhost:3301/files/upload', {
+        const rs = await fetch(url + '/files/upload', {
             method: 'POST',
             body: formData,
             headers: {
@@ -82,7 +84,7 @@ export default function FileManager({returnLink, close}: any) {
     const deleteFile = async () => {
 
         if(selected.name != "") {
-            const rs = await fetch('http://localhost:3301/files/' + selected.fileName, {
+            const rs = await fetch(url + '/files/' + selected.fileName, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
