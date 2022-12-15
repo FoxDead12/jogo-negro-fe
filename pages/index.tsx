@@ -2,6 +2,7 @@ import { FormEvent, useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import { Context } from "vm";
 import Image from "next/image";
+import Head from "next/head";
 
 const myLoader = ({ src }: any) => {
   return src;
@@ -10,22 +11,32 @@ const myLoader = ({ src }: any) => {
 export default function Home({spaces, services, texts}: any) {
     
   return (
-    <div className='relative flex flex-col w-full h-screen bg-gray-100 z-0'>
 
-      <div className="bg-gray-100">
-        <Header />
-        <Hero data={texts} />
-        <Espacos data={spaces}/>
+    <>
+      <Head>
+        <meta name="description" content="Já ouviste falar de capoeira, ou já viste? Anda nos visitar para poderes expermentar, sente te a vontade para nos conhecer e seguirnos nas nossas redes!!"></meta>
+        <meta property="locale" content="pt_PT"></meta>
+        <meta property="title" content="Jogo de Negro"></meta>
+        <title>Jogo de Negro</title>
+        <link rel="icon" type="image/x-icon" href="/logo.jpeg"></link>
+      </Head>
+      <div className='relative flex flex-col w-full h-screen bg-gray-100 z-0'>
+
+        <div className="bg-gray-100">
+          <Header />
+          <Hero data={texts} />
+          <Espacos data={spaces}/>
+        </div>
+
+        <Separator />
+
+        <div className="bg-gray-100">
+          <Servicos  data={services}/>
+          <Contactos />
+        </div>
+
       </div>
-
-      <Separator />
-
-      <div className="bg-gray-100">
-        <Servicos  data={services}/>
-        <Contactos />
-      </div>
-
-    </div>
+    </>
   )
 }
 
