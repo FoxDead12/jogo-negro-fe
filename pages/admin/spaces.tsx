@@ -451,7 +451,7 @@ function Add({close, mainUrl}: any) {
 export async function getServerSideProps(context: Context) {
     
     const token = context.req.cookies['token'] || '';
-    const result = await fetch("http://localhost:3000/api/validate", 
+    const result = await fetch("https://jogodenegro.pt/api/validate", 
         {
             method: 'POST',
             headers: {
