@@ -362,8 +362,7 @@ function Add({close, mainUrl}: any) {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Credentials": "true",
                 Cookie: `token=${token}`
-            },
-            credentials: "include"
+            }
         })
         
         
