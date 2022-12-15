@@ -4,7 +4,7 @@ import { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FiUpload } from "react-icons/fi";
 
-const url = "http://localhost:3301";
+const url = "https://server.jogodenegro.pt/";
 
 const myLoader = ({ src, width, quality }: any) => {
     return `${url}/uploads/${src}?w=${width}&q=${quality || 75}`
