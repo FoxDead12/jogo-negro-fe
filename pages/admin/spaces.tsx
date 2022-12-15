@@ -9,6 +9,8 @@ import { GrLocation } from "react-icons/gr";
 import AdimPanel from "../../components/layouts/AdimPanel";
 import Loader from "../../components/Loader";
 import FileManager from "../../components/FIleManager";
+import { getCookie } from 'cookies-next';
+
 
 
 export default function Spaces ({data, erro, url}: any) {
@@ -194,7 +196,7 @@ function Menu({data, close, mainUrl}: any) {
         setLoad(true);
 
         const target = e.target as any;
-
+        const token = getCookie('token', {path: "/"});
         const result = await fetch(mainUrl + '/spaces/edit', {
             method: "POST",
             body: JSON.stringify({
@@ -208,7 +210,8 @@ function Menu({data, close, mainUrl}: any) {
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
                 "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true"
+                "Access-Control-Allow-Credentials": "true",
+                Cookie: `token=${token}`
             },
             credentials: "include"
         })
@@ -291,13 +294,14 @@ function Delete({data, close, mainUrl}: any) {
 
         e.preventDefault();
         setLoad(true);
-
+        const token = getCookie('token', {path: "/"});
         const result = await fetch(mainUrl + `/spaces/${data._id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
                 "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true"
+                "Access-Control-Allow-Credentials": "true",
+                Cookie: `token=${token}`
             },
             credentials: "include"
         })
@@ -368,7 +372,7 @@ function Add({close, mainUrl}: any) {
         setLoad(true);
 
         const target = e.target as any;
-
+        const token = getCookie('token', {path: "/"});
         const result = await fetch(mainUrl + '/spaces', {
             method: "POST",
             body: JSON.stringify({
@@ -381,7 +385,9 @@ function Add({close, mainUrl}: any) {
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
                 "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true"
+                "Access-Control-Allow-Credentials": "true",
+                Cookie: `token=${token}`
+
             },
             credentials: "include"
         })

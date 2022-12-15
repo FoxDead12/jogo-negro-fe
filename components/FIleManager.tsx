@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from "react"
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FiUpload } from "react-icons/fi";
+import { getCookie } from 'cookies-next';
 
 const url = "https://server.jogodenegro.pt";
 
@@ -60,7 +61,7 @@ export default function FileManager({returnLink, close}: any) {
 
         const formData = new FormData();
         formData.append('image', files[0]);
-
+        const token = getCookie('token', {path: "/"});
         const rs = await fetch(url + '/files/upload', {
             method: 'POST',
             body: formData,
@@ -68,6 +69,7 @@ export default function FileManager({returnLink, close}: any) {
                 'Accept': 'application/json',
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Credentials": "true",
+                Cookie: `token=${token}`
             },
             credentials: 'include'
         })
@@ -84,12 +86,15 @@ export default function FileManager({returnLink, close}: any) {
     const deleteFile = async () => {
 
         if(selected.name != "") {
+            const token = getCookie('token', {path: "/"});
             const rs = await fetch(url + '/files/' + selected.fileName, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Credentials": "true",
+                Cookie: `token=${token}`
+
             },
             credentials: 'include'
         })
