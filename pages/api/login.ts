@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     
     if(req.method === "POST") {
         
-        await fetch(process.env['SERVER-URL-MAIN'] + '/users/login', {
+        await fetch(process.env['SERVER_URL_MAIN'] + '/users/login', {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"

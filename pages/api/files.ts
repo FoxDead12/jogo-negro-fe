@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if(req.method === "GET") {
 
         //1º Buscar Nome Ficheiros
-        const result = await fetch(process.env['SERVER-URL-MAIN'] + "/files",
+        const result = await fetch(process.env['SERVER_URL_MAIN'] + "/files",
             {
                 method: 'GET',
                 headers: {
@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } 
     else {
 
-        const result = await fetch(process.env['SERVER-URL-MAIN'] + "/files/upload",
+        const result = await fetch(process.env['SERVER_URL_MAIN'] + "/files/upload",
         {
                 method: 'POST',
                 headers: {

@@ -333,13 +333,13 @@ export function Contactos() {
 
 export async function getServerSideProps(context: Context) {
 
-  const resSpaces = await fetch(process.env['SERVER-URL-MAIN'] + "/spaces/active");
+  const resSpaces = await fetch(process.env['SERVER_URL_MAIN'] + "/spaces/active");
   const spaces = await resSpaces.json();
 
-  const resServices = await fetch(process.env['SERVER-URL-MAIN'] + "/services/active");
+  const resServices = await fetch(process.env['SERVER_URL_MAIN'] + "/services/active");
   const services = await resServices.json();
 
-  const resTexts = await fetch(process.env['SERVER-URL-MAIN'] + "/texts/active");
+  const resTexts = await fetch(process.env['SERVER_URL_MAIN'] + "/texts/active");
   const texts = await resTexts.json();
 
   return {

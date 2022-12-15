@@ -436,7 +436,7 @@ export async function getServerSideProps(context: Context) {
         
     }
 
-    const res = await fetch(process.env['SERVER-URL-MAIN'] + "/texts",
+    const res = await fetch(process.env['SERVER_URL_MAIN'] + "/texts",
     {
         headers: {
             Cookie: `token=${token}`
@@ -450,7 +450,7 @@ export async function getServerSideProps(context: Context) {
         return {
             props: {
                 data: data,
-                url: process.env['SERVER-URL-MAIN'],
+                url: process.env['SERVER_URL_MAIN'],
                 token: token
             }, // will be passed to the page component as props
         }
