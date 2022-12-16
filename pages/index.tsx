@@ -23,8 +23,8 @@ export default function Home({spaces, services, texts}: any) {
         <meta charSet="UTF-8"></meta>
         <meta name="author" content="David Xavier"></meta>
         <meta name="viewport" content="width=device-width" initial-scale="1" />
-        <meta name="robots" content="index, follow" />
-      </Head>
+        <meta name="robots" content="nofollow" />      
+        </Head>
       <div className='relative flex flex-col w-full h-screen bg-gray-100 z-0'>
 
         <div className="bg-gray-100">
