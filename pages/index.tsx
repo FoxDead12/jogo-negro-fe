@@ -14,11 +14,16 @@ export default function Home({spaces, services, texts}: any) {
 
     <>
       <Head>
-        <meta name="description" content="Já ouviste falar de capoeira, ou já viste? Anda nos visitar para poderes expermentar, sente te a vontade para nos conhecer e seguirnos nas nossas redes!!"></meta>
-        <meta property="locale" content="pt_PT"></meta>
-        <meta property="title" content="ACDR Jogo de Negro"></meta>
         <title>ACDR Jogo de Negro</title>
         <link rel="icon" type="image/x-icon" href="/logo.jpeg"></link>
+        <meta name="description" content="Já ouviste falar de capoeira, ou já viste? Anda nos visitar para expermentar, sente te a vontade para nos conhecer e seguirnos nas nossas redes!!"></meta>
+        <meta property="locale" content="pt_PT"></meta>
+        <meta property="title" content="ACDR Jogo de Negro"></meta>
+        <meta name="keywords" content="Capoeira,Jogo de Negro,Treino,Porto,Jogar, Roda"></meta>
+        <meta charSet="UTF-8"></meta>
+        <meta name="author" content="David Xavier"></meta>
+        <meta name="viewport" content="width=device-width" initial-scale="1" />
+        <meta name="robots" content="index, follow" />
       </Head>
       <div className='relative flex flex-col w-full h-screen bg-gray-100 z-0'>
 
