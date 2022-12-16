@@ -5,10 +5,9 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FiUpload } from "react-icons/fi";
 import { getCookie } from 'cookies-next';
 
-const url = "https://server.jogodenegro.pt";
 
 const myLoader = ({ src, width, quality }: any) => {
-    return `${url}/uploads/${src}?w=${width}&q=${quality || 75}`
+    return `${process.env.NEXT_PUBLIC_SERVER_URL_MAIN}/uploads/${src}?w=${width}&q=${quality || 75}`
 }
 
 
@@ -21,10 +20,10 @@ export default function FileManager({returnLink, close}: any) {
 
     useEffect(() => {
         fetch('/api/files')
-          .then((res) => res.json())
-          .then((data) => {
+        .then((res) => res.json())
+        .then((data) => {
             setFiles(data.files);
-          })
+        })
 
     }, [state])
 
@@ -61,20 +60,13 @@ export default function FileManager({returnLink, close}: any) {
 
         const formData = new FormData();
         formData.append('image', files[0]);
-        const token = getCookie('token', {path: "/"});
-        const rs = await fetch(url + '/files/upload', {
+
+        const rs = await fetch('/api/files', {
             method: 'POST',
             body: formData,
-            headers: {
-                'Accept': 'application/json',
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true",
-                Cookie: `token=${token}`
-            },
-            credentials: 'include'
         })
 
-        if(rs.status == 201) {
+        if(rs.status == 200) {
             setState(!state)
         }
         else {
@@ -87,7 +79,7 @@ export default function FileManager({returnLink, close}: any) {
 
         if(selected.name != "") {
             const token = getCookie('token', {path: "/"});
-            const rs = await fetch(url + '/files/' + selected.fileName, {
+            const rs = await fetch(process.env.NEXT_PUBLIC_SERVER_URL_MAIN + '/files/' + selected.fileName, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

@@ -184,8 +184,8 @@ function Menu({data, close, mainUrl}: any) {
 
         const target = e.target as any;
         const token = getCookie('token', {path: "/"});
-        const result = await fetch(mainUrl + '/services/edit', {
-            method: "POST",
+        const result = await fetch('/api/services', {
+            method: "PUT",
             body: JSON.stringify({
                 name: target.elements.name.value,
                 imageUrl: image,
@@ -194,16 +194,12 @@ function Menu({data, close, mainUrl}: any) {
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true",
-                Cookie: `token=${token}`
-            },
-            credentials: "include"
+            }
         })
         
         
-        if(result.status === 201) {
-            console.log("SUCESS")
+        if(result.status === 200) {
+            
         }
         else {
             const data = await result.json();
@@ -269,21 +265,16 @@ function Delete({data, close, mainUrl}: any) {
 
         e.preventDefault();
         setLoad(true);
-        const token = getCookie('token', {path: "/"});
-        const result = await fetch(mainUrl + `/services/${data._id}`, {
+        const result = await fetch(`/api/services`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true",
-                Cookie: `token=${token}`
             },
-            credentials: "include"
+            body: JSON.stringify({_id: data._id})
         })
         
         
         if(result.status === 200) {
-            console.log("SUCESS")
         }
         else {
             const data = await result.json();
@@ -347,8 +338,7 @@ function Add({close, mainUrl}: any) {
         setLoad(true);
 
         const target = e.target as any;
-        const token = getCookie('token', {path: "/"});
-        const result = await fetch(mainUrl + '/services', {
+        const result = await fetch('/api/services', {
             method: "POST",
             body: JSON.stringify({
                 name: target.elements.name.value,
@@ -357,16 +347,11 @@ function Add({close, mainUrl}: any) {
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true",
-                Cookie: `token=${token}`
-            },
-            credentials: "include"
+            }
         })
         
         
-        if(result.status === 201) {
-            console.log("SUCESS")
+        if(result.status === 200) {
         }
         else {
             const data = await result.json();
@@ -418,7 +403,7 @@ function Add({close, mainUrl}: any) {
 export async function getServerSideProps(context: Context) {
     
     const token = context.req.cookies['token'] || '';
-    const result = await fetch("https://jogodenegro.pt/api/validate", 
+    const result = await fetch(process.env.HOST_URL_MAIN + "/api/validate", 
         {
             method: 'POST',
             headers: {

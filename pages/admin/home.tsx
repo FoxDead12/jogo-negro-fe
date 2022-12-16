@@ -18,7 +18,7 @@ export default function Home () {
 export async function getServerSideProps(context: Context) {
     
     const token = context.req.cookies['token'] || '';
-    const result = await fetch("https://jogodenegro.pt/api/validate", 
+    const result = await fetch(process.env.HOST_URL_MAIN + "/api/validate", 
         {
             method: 'POST',
             headers: {

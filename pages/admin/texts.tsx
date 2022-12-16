@@ -185,27 +185,22 @@ function Menu({data, close, mainUrl}: any) {
         setLoad(true);
 
         const target = e.target as any;
-        const token = getCookie('token', {path: "/"});
-        const result = await fetch(mainUrl + '/texts/edit', {
-            method: "POST",
+        const result = await fetch(`/api/texts`, {
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
             body: JSON.stringify({
                 title: target.elements.title.value,
                 description: target.elements.description.value,
                 active: target.elements.active.checked,
                 _id: data._id
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true",
-                Cookie: `token=${token}`
-            },
-            credentials: "include"
+            })
         })
         
         
-        if(result.status === 201) {
-            console.log("SUCESS")
+        if(result.status === 200) {
+
         }
         else {
             const data = await result.json();
@@ -270,22 +265,17 @@ function Delete({data, close, mainUrl}: any) {
 
         e.preventDefault();
         setLoad(true);
-        const token = getCookie('token', {path: "/"});
-        const result = await fetch(mainUrl + `/texts/${data._id}`, {
+        const result = await fetch(`/api/texts`, {
             method: "DELETE",
             headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true",
-                Cookie: `token=${token}`
-
+                "Content-type": "application/json; charset=UTF-8",   
             },
-            credentials: "include"
+            body: JSON.stringify({_id: data._id})
         })
         
         
         if(result.status === 200) {
-            console.log("SUCESS")
+            
         }
         else {
             const data = await result.json();
@@ -323,16 +313,6 @@ function Add({close, mainUrl}: any) {
     const [chooseFile, setChooseFile] = useState(false);
     const [load, setLoad] = useState(false);
 
-    const changeImage = (e: ChangeEvent) => {
-
-        if(e.target) {
-
-            const target = e.target as any;
-            const file = target.files[0];
-            setImage(file);
-        }
-    }
-
     // Files Menu
     const reciveImageChoose = (url: string) => {
 
@@ -349,8 +329,7 @@ function Add({close, mainUrl}: any) {
         setLoad(true);
 
         const target = e.target as any;
-        const token = getCookie('token', {path: "/"});
-        const result = await fetch(mainUrl + '/texts', {
+        const result = await fetch('/api/texts', {
             method: "POST",
             body: JSON.stringify({
                 title: target.elements.title.value,
@@ -358,16 +337,12 @@ function Add({close, mainUrl}: any) {
                 active: target.elements.active.checked,
             }),
             headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true",
-                Cookie: `token=${token}`
+                "Content-type": "application/json; charset=UTF-8",   
             }
         })
         
-        
-        if(result.status === 201) {
-            console.log("SUCESS")
+        if(result.status === 200) {
+            close();
         }
         else {
             const data = await result.json();
@@ -418,7 +393,7 @@ function Add({close, mainUrl}: any) {
 export async function getServerSideProps(context: Context) {
     
     const token = context.req.cookies['token'] || '';
-    const result = await fetch("https://jogodenegro.pt/api/validate", 
+    const result = await fetch(process.env.HOST_URL_MAIN + "/api/validate", 
         {
             method: 'POST',
             headers: {
