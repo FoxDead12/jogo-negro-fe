@@ -16,7 +16,7 @@ export default function Home({spaces, services, texts}: any) {
       <Head>
         <title>ACDR Jogo de Negro</title>
         <link rel="icon" type="image/x-icon" href="/logo.jpeg"></link>
-        <meta name="description" content="Já ouviste falar de capoeira, ou já viste? Anda nos visitar para expermentar, sente te a vontade para nos conhecer e seguirnos nas nossas redes!!"></meta>
+        <meta name="description" content="Já ouviste falar de capoeira, ou já viste? Anda visitar o Jogo de Negro para expermentar, sente te a vontade para nos conhecer e seguirnos nas nossas redes!!"></meta>
         <meta property="locale" content="pt_PT"></meta>
         <meta property="title" content="ACDR Jogo de Negro"></meta>
         <meta name="keywords" content="Capoeira,Jogo de Negro,Treino,Porto,Jogar, Roda"></meta>
