@@ -164,7 +164,7 @@ export function Espacos({data}: any) {
                 
                 <div className='flex items-center justify-center relative mt-12'>
                     <a href={data.mapsUrl} target={"_blank"} className='relative py-4 px-10 text-gray-200 uppercase font-bold bg-blue-900 rounded-full shadow-sm tracking-wide'>
-                        Vem Visitar
+                        Vem nos Visitar
                     </a>
                 </div>
             </div>
@@ -175,8 +175,8 @@ export function Espacos({data}: any) {
   return (
       <section className='mb-12' id='espacos'>
           <div className='relative  md:w-[95%] lg:w-[70%] m-auto pt-20'>
-              <h1 className='text-3xl font-bold text-blue-900 uppercase mb-8 text-center'>Espaços de Treino</h1>
-              <h4 className='mb-10 text-center text-base tracking-wider'>Vé o que fica mais acessivel, para conseguires vir treinar!</h4>
+              <h1 className='text-3xl font-bold text-blue-900 uppercase mb-8 text-center'>Onde nos podes encontrar</h1>
+              <h4 className='mb-10 text-center text-base tracking-wider px-8 md:p-0'>Vé o que fica mais acessivel, para conseguires vir treinar!</h4>
 
               <div className='flex flex-wrap items-center justify-center md:justify-between '>
                   {loadSpaces()}
@@ -197,10 +197,10 @@ export function Separator() {
 
 
           <div className='relative w-[5%]  h-[150px] z-0 bg-gray-100 '></div>
-          <div className='relative w-[90%] h-[150px] z-0 bg-transparent flex justify-center items-center'>
-              <h1 className='text-2xl text-white uppercase font-bold tracking-wide mr-8'>Ainda estás com dúvidas?</h1>
+          <div className='relative w-[90%] h-[150px] z-0 bg-transparent flex justify-center items-center px-4 md:p-0'>
+              <h1 className='md:text-2xl text-white uppercase font-bold tracking-wide md:mr-8'>Ainda estás com dúvidas?</h1>
               
-              <button className='bg-white p-4 cursor-auto rounded-full text-blue-600 text-sm font-bold uppercase tracking-wider ml-8 hover:bg-gray-100'>Fala Connosco</button>
+              <button className='bg-white p-4 cursor-auto rounded-full text-blue-600 text-sm font-bold uppercase tracking-wider md:ml-8 hover:bg-gray-100'>Fala Connosco</button>
           </div>
           <div className='relative w-[5%]  h-[150px] z-0 bg-gray-100 '></div>
 
@@ -233,8 +233,8 @@ export function Servicos({data}: any) {
   return (
       <section className='mb-12' id='servicos'>
           <div className='relative  md:w-[95%] lg:w-[70%] m-auto pt-20'>
-              <h1 className='text-3xl font-bold text-blue-900 uppercase text-center mb-8'>Serviços</h1>
-              <h4 className='mb-10 text-center text-base tracking-wider'>Caso tenha algum interesse não exite em nos contactar!</h4>
+              <h1 className='text-3xl font-bold text-blue-900 uppercase text-center mb-8'>Nossos trabalhos</h1>
+              <h4 className='mb-10 text-center text-base tracking-wider px-12 md:p-0'>Caso tenha algum interesse não exite em nos contactar!</h4>
 
               <div className='flex flex-wrap items-center justify-center md:justify-between '>
                   {loadServices()}
