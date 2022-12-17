@@ -6,8 +6,6 @@ import Head from "next/head";
 import { AiOutlineClose, AiOutlineHome, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
 import { BiTask } from "react-icons/bi";
-import { GrContact } from "react-icons/gr";
-import { Html } from "next/document";
 
 const myLoader = ({ src }: any) => {
   return src;
@@ -17,42 +15,43 @@ export default function Home({spaces, services, texts}: any) {
     
   return (
 
-    <Html lang="pt-PT">
+    <>
       <Head>
         <title>ACDR Jogo de Negro</title>
         <link rel="icon" type="image/x-icon" href="/logo.png"></link>
         <meta name="description" content="Já ouviste falar de capoeira, ou já viste? Anda visitar o Jogo de Negro para expermentar, sente te a vontade para nos conhecer e seguirnos nas nossas redes!!"></meta>
-        <meta property="locale" content="pt_PT"></meta>
+        <meta property="locale" content="pt-PT"></meta>
         <meta property="title" content="ACDR Jogo de Negro"></meta>
         <meta name="keywords" content="Capoeira,Jogo de Negro,Treino,Porto,Jogar, Roda"></meta>
         <meta charSet="UTF-8"></meta>
         <meta name="viewport" content="width=device-width" initial-scale="1" />
-        <meta name="robots" content="nofollow" />      
-        </Head>
-      <div className='relative flex flex-col w-full h-screen bg-gray-100 z-0'>
+        <meta name="robots" content="nofollow" /> 
+      </Head>
 
-        <div className="bg-gray-100">
-          <Header />
-          <HeaderMobile />
-          <Hero data={texts} />
-          <Espacos data={spaces}/>
+        <div className='relative flex flex-col w-full h-screen bg-gray-100 z-0'>
+
+            <div className="bg-gray-100">
+              <Header />
+              <HeaderMobile />
+              <Hero data={texts} />
+              <Espacos data={spaces}/>
+            </div>
+
+            <Separator />
+
+            <div className="bg-gray-100">
+              <Servicos  data={services}/>
+              <Contactos />
+            </div>
+
         </div>
-
-        <Separator />
-
-        <div className="bg-gray-100">
-          <Servicos  data={services}/>
-          <Contactos />
-        </div>
-
-      </div>
-    </Html>
+    </>
   )
 }
 
 export function HeaderMobile() {
 
-  const headerRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<any>(null);
   const [open, setOpen] = useState(false);
 
   const scrollToElement = (id: string) => {
@@ -72,7 +71,7 @@ export function HeaderMobile() {
   }
 
   return (
-    <header ref={headerRef} className='fixed flex justify-between md:hidden bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c] p-4'>
+    <div ref={headerRef} className='fixed flex justify-between md:hidden bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c] p-4'>
         <div className='w-auto flex items-center select-none'>
           <h1 onClick={() => scrollToTop()} className='text-white text-2xl font-bold uppercase cursor-pointer'>Jogo de Negro</h1>
         </div>
@@ -90,7 +89,7 @@ export function HeaderMobile() {
             <li className="p-4" onClick={() => scrollToElement("contactos")}><AiOutlineMail className="w-[25px] h-[25px] text-white"/></li>
           </ul>
         </div>
-    </header>
+    </div>
   )
 }
 
@@ -210,7 +209,7 @@ export function Espacos({data}: any) {
         <div className='relative  my-10 rounded-sm overflow-hidden max-w-[300px] h-auto'>
             
             <img alt="" />
-            <Image loader={myLoader} src={data.imageUrl} width={300} height={300} className='object-cover w-[300px] h-[300px]' alt={data.name}/>
+            <Image loader={myLoader} src={data.imageUrl} alt={data.name} width={300} height={300} className='object-cover w-[300px] h-[300px]'/>
 
             <div className='border-[1.5px] border-gray-300 p-4 flex flex-col pt-8'>
                 <h1 className='text-blue-900 text-xl font-bold text-center tracking-wide'>{data.name}</h1>
