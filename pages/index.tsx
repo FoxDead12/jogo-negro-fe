@@ -3,6 +3,10 @@ import emailjs from '@emailjs/browser';
 import { Context } from "vm";
 import Image from "next/image";
 import Head from "next/head";
+import { AiOutlineClose, AiOutlineHome, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
+import { CiLocationOn } from "react-icons/ci";
+import { BiTask } from "react-icons/bi";
+import { GrContact } from "react-icons/gr";
 
 const myLoader = ({ src }: any) => {
   return src;
@@ -28,6 +32,7 @@ export default function Home({spaces, services, texts}: any) {
 
         <div className="bg-gray-100">
           <Header />
+          <HeaderMobile />
           <Hero data={texts} />
           <Espacos data={spaces}/>
         </div>
@@ -41,6 +46,50 @@ export default function Home({spaces, services, texts}: any) {
 
       </div>
     </>
+  )
+}
+
+export function HeaderMobile() {
+
+  const headerRef = useRef<HTMLElement>(null);
+  const [open, setOpen] = useState(false);
+
+  const scrollToElement = (id: string) => {
+
+    const heightHeader = (headerRef.current?.offsetHeight || 0);
+    window.scroll({
+      top: (document.getElementById(id)?.offsetTop || 0) - heightHeader,
+      behavior: 'smooth'
+    })
+
+    setOpen(false)
+  }
+
+  const scrollToTop = () => {
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  return (
+    <header ref={headerRef} className='fixed flex justify-between md:hidden bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c] p-4'>
+        <div className='w-auto flex items-center select-none'>
+          <h1 onClick={() => scrollToTop()} className='text-white text-2xl font-bold uppercase cursor-pointer'>Jogo de Negro</h1>
+        </div>
+
+        <div className="w-auto flex items-center select-none">
+          <AiOutlineMenu className={`w-[30px] h-[30px] text-white ${open == false ? 'visible': 'hidden'} transition-all duration-300`} onClick={() => setOpen(!open)}/>
+          <AiOutlineClose className={`w-[30px] h-[30px] text-white ${open == true ? 'visible': 'hidden'} transition-all duration-300`} onClick={() => setOpen(!open)}/>
+        </div>
+
+        <div className={`absolute top-[100%] ${open ? 'right-0' : '-right-[100%]'} bg-blue-600 rounded-sm rounded-t-none shadow-sm transition-all duration-300`} >
+          <ul>
+            <li className="p-4" onClick={() => scrollToElement("sobre")}><AiOutlineHome className="w-[25px] h-[25px] text-white"/></li>
+            <li className="p-4" onClick={() => scrollToElement("espacos")}><CiLocationOn strokeWidth={1} className="w-[25px] h-[25px] text-white"/></li>
+            <li className="p-4" onClick={() => scrollToElement("servicos")}><BiTask className="w-[25px] h-[25px] text-white"/></li>
+            <li className="p-4" onClick={() => scrollToElement("contactos")}><AiOutlineMail className="w-[25px] h-[25px] text-white"/></li>
+          </ul>
+        </div>
+    </header>
   )
 }
 
