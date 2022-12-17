@@ -7,6 +7,7 @@ import { AiOutlineClose, AiOutlineHome, AiOutlineMail, AiOutlineMenu } from "rea
 import { CiLocationOn } from "react-icons/ci";
 import { BiTask } from "react-icons/bi";
 import { GrContact } from "react-icons/gr";
+import { Html } from "next/document";
 
 const myLoader = ({ src }: any) => {
   return src;
@@ -16,9 +17,8 @@ export default function Home({spaces, services, texts}: any) {
     
   return (
 
-    <>
+    <Html lang="pt">
       <Head>
-        <html lang="pt"/>
         <title>ACDR Jogo de Negro</title>
         <link rel="icon" type="image/x-icon" href="/logo.png"></link>
         <meta name="description" content="Já ouviste falar de capoeira, ou já viste? Anda visitar o Jogo de Negro para expermentar, sente te a vontade para nos conhecer e seguirnos nas nossas redes!!"></meta>
@@ -46,7 +46,7 @@ export default function Home({spaces, services, texts}: any) {
         </div>
 
       </div>
-    </>
+    </Html>
   )
 }
 
