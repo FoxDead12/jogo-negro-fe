@@ -17,7 +17,7 @@ export default function Home({spaces, services, texts}: any) {
     
   return (
 
-    <Html lang="pt">
+    <Html lang="pt-PT">
       <Head>
         <title>ACDR Jogo de Negro</title>
         <link rel="icon" type="image/x-icon" href="/logo.png"></link>
