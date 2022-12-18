@@ -4,7 +4,7 @@ import { CookiesProvider } from 'react-cookie';
 import "../styles/globals.css";
 import Router from 'next/router';
 import Loader from '../components/Loader';
-import Head from 'next/head';
+import { Html } from 'next/document';
 
 export default function App({ Component, pageProps }: AppProps) {
   
@@ -22,10 +22,10 @@ export default function App({ Component, pageProps }: AppProps) {
   
 
   return (
-    <CookiesProvider>
-      {loading && <Loader />}
 
-      <Component {...pageProps} />
+    <CookiesProvider>
+        {loading && <Loader />}
+        <Component {...pageProps} />
     </CookiesProvider>
   )
 }

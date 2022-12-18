@@ -6,8 +6,9 @@ import Head from "next/head";
 import { AiOutlineClose, AiOutlineHome, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
 import { BiTask } from "react-icons/bi";
+import { ImLocation } from "react-icons/im";
 
-const myLoader = ({ src }: any) => {
+const myLoader = ({ src, width, height}: any) => {
   return src;
 }
 
@@ -32,7 +33,7 @@ export default function Home({spaces, services, texts}: any) {
 
             <div className="bg-gray-100">
               <Header />
-              <HeaderMobile />
+              <HeaderPhone />
               <Hero data={texts} />
               <Espacos data={spaces}/>
             </div>
@@ -43,20 +44,19 @@ export default function Home({spaces, services, texts}: any) {
               <Servicos  data={services}/>
               <Contactos />
             </div>
-
         </div>
     </>
   )
 }
 
-export function HeaderMobile() {
+export function HeaderPhone({}: any) {
 
-  const headerRef = useRef<any>(null);
+  const headerMobileRef = useRef<any>(null);
   const [open, setOpen] = useState(false);
 
   const scrollToElement = (id: string) => {
 
-    const heightHeader = (headerRef.current?.offsetHeight || 0);
+    const heightHeader = (headerMobileRef.current?.offsetHeight || 0);
     window.scroll({
       top: (document.getElementById(id)?.offsetTop || 0) - heightHeader,
       behavior: 'smooth'
@@ -71,7 +71,7 @@ export function HeaderMobile() {
   }
 
   return (
-    <div ref={headerRef} className='fixed flex justify-between md:hidden bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c] p-4'>
+    <div ref={headerMobileRef} className='fixed flex justify-between md:hidden bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c] p-4'>
         <div className='w-auto flex items-center select-none'>
           <h1 onClick={() => scrollToTop()} className='text-white text-2xl font-bold uppercase cursor-pointer'>Jogo de Negro</h1>
         </div>
@@ -83,10 +83,10 @@ export function HeaderMobile() {
 
         <div className={`absolute top-[100%] ${open ? 'right-0' : '-right-[100%]'} bg-blue-600 rounded-sm rounded-t-none shadow-sm transition-all duration-300`} >
           <ul>
-            <li className="p-4" onClick={() => scrollToElement("sobre")}><AiOutlineHome className="w-[25px] h-[25px] text-white"/></li>
-            <li className="p-4" onClick={() => scrollToElement("espacos")}><CiLocationOn strokeWidth={1} className="w-[25px] h-[25px] text-white"/></li>
-            <li className="p-4" onClick={() => scrollToElement("servicos")}><BiTask className="w-[25px] h-[25px] text-white"/></li>
-            <li className="p-4" onClick={() => scrollToElement("contactos")}><AiOutlineMail className="w-[25px] h-[25px] text-white"/></li>
+            <li className="p-4" onClick={(e) => scrollToElement("sobre")}><AiOutlineHome className="w-[25px] h-[25px] text-white"/></li>
+            <li className="p-4" onClick={(e) => scrollToElement("espacos")}><ImLocation className="w-[25px] h-[25px] text-white"/></li>
+            <li className="p-4" onClick={(e) => scrollToElement("servicos")}><BiTask className="w-[25px] h-[25px] text-white"/></li>
+            <li className="p-4" onClick={(e) => scrollToElement("contactos")}><AiOutlineMail className="w-[25px] h-[25px] text-white"/></li>
           </ul>
         </div>
     </div>
@@ -212,7 +212,7 @@ export function Espacos({data}: any) {
             <Image loader={myLoader} src={data.imageUrl} alt={data.name} width={300} height={300} className='object-cover w-[300px] h-[300px]'/>
 
             <div className='border-[1.5px] border-gray-300 p-4 flex flex-col pt-8'>
-                <h1 className='text-blue-900 text-xl font-bold text-center tracking-wide'>{data.name}</h1>
+                <h2 className='text-blue-900 text-xl font-bold text-center tracking-wide'>{data.name}</h2>
                 <h3 className='text-gray-900 text-base font-light text-center tracking-normal mt-6'>{data.location}</h3>
                 
                 <div className='flex items-center justify-center relative mt-12'>
@@ -278,7 +278,7 @@ export function Servicos({data}: any) {
   
         <div className='my-10 '>
             <Image loader={myLoader} src={data.imageUrl} alt={data.name} width={300} height={300} className='w-[300px] h-[300px] object-cover rounded-sm' />
-            <h1 className='text-xl font-medium text-blue-900 text-center py-4 border-[1.5px] border-t-0 border-gray-300 tracking-wide'>{data.name}</h1>
+            <h2 className='text-xl font-medium text-blue-900 text-center py-4 border-[1.5px] border-t-0 border-gray-300 tracking-wide'>{data.name}</h2>
         </div>
     )
   }
