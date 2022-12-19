@@ -45,6 +45,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return res.status(rs.status).json(data);
         }
     }
+
+    if(req.method === "DELETE") {
+
+        const rs = await fetch(process.env['SERVER_URL_MAIN']+ `/files/${req.body.fileName}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                'Cookie': `token=${req.cookies.token};`
+            }
+        })
+
+        if(rs.status == 200 || rs.status == 201) {
+            return res.status(200).json({message: "Apagado com sucesso!!"});
+        }
+        else {
+            const data = await rs.json();
+            return res.status(rs.status).json(data);
+        }
+    }
     
     res.status(500).json({message: "wrong method request!"})
 }

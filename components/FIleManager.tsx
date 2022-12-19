@@ -61,12 +61,13 @@ export default function FileManager({returnLink, close}: any) {
         const formData = new FormData();
         formData.append('image', files[0]);
 
-        const rs = await fetch('/api/files', {
+        const rs = await fetch(process.env.NEXT_PUBLIC_SERVER_URL_MAIN + "/files/upload", {
             method: 'POST',
             body: formData,
+            credentials: "include"
         })
 
-        if(rs.status == 200) {
+        if(rs.status == 201) {
             setState(!state)
         }
         else {
@@ -78,26 +79,24 @@ export default function FileManager({returnLink, close}: any) {
     const deleteFile = async () => {
 
         if(selected.name != "") {
-            const token = getCookie('token', {path: "/"});
-            const rs = await fetch(process.env.NEXT_PUBLIC_SERVER_URL_MAIN + '/files/' + selected.fileName, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": "true",
-                Cookie: `token=${token}`
-
-            },
-            credentials: 'include'
-        })
-
-        if(rs.status == 200) {
-            setState(!state)
-        }
-        else {
-            const data = await rs.json();
-            console.log(data?.message)
-        }
+            const rs = await fetch('/api/files', {
+                method: 'DELETE',
+                body: JSON.stringify({
+                    fileName: selected.fileName
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                }
+            });
+    
+            if(rs.status == 200) {
+                setState(!state)
+            }
+            else {
+                const data = await rs.json();
+                console.log(data?.message)
+            }
+                
         }
     }
 
