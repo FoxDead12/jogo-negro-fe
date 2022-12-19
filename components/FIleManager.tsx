@@ -62,9 +62,10 @@ export default function FileManager({returnLink, close}: any) {
         formData.append('image', files[0]);
 
         const rs = await fetch(process.env.NEXT_PUBLIC_SERVER_URL_MAIN + "/files/upload", {
-            method: 'POST',
             credentials: "include",
-            body: formData
+            method: 'POST',
+            body: formData,
+            mode: 'cors'
         })
 
         if(rs.status == 201) {
