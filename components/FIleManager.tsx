@@ -63,8 +63,8 @@ export default function FileManager({returnLink, close}: any) {
 
         const rs = await fetch(process.env.NEXT_PUBLIC_SERVER_URL_MAIN + "/files/upload", {
             method: 'POST',
-            body: formData,
-            credentials: "include"
+            credentials: "include",
+            body: formData
         })
 
         if(rs.status == 201) {
