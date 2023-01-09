@@ -1,5 +1,8 @@
-# https://www.robotstxt.org/robotstxt.html
+
+# Block all crawlers for /accounts
 User-agent: *
 Disallow: /admin
-Disallow: /admin/*
-Allow:/
+
+# Allow all crawlers
+User-agent: *
+Allow: /

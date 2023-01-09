@@ -14,6 +14,7 @@ export default function AdimPanel ({children}: any) {
             <Head>
                 <title>Painel</title>
                 <link rel="icon" type="image/x-icon" href="/panel.ico"></link>
+                <meta name="robots" content="noindex, nofollow" /> 
             </Head>
             <div className="w-screen h-screen grid grid-cols-[200px_minmax(0px,_1fr)_0px]">
                 <div className="bg-gray-800">
