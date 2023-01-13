@@ -6,7 +6,7 @@ function generateSiteMap(date) {
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
      <url>
-       <loc>https://jsonplaceholder.typicode.com</loc>
+       <loc>https://www.jogodenegro.pt/</loc>
        <lastmod>${date}</lastmod>      
      </url>
    </urlset>
