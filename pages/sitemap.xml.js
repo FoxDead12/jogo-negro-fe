@@ -1,12 +1,14 @@
 //pages/sitemap.xml.js
-const EXTERNAL_DATA_URL = 'https://jsonplaceholder.typicode.com/posts';
-
 function generateSiteMap(date) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
      <url>
        <loc>https://www.jogodenegro.pt/</loc>
+        <video:video>
+          <video:title>Jogo de Negro</video:title>
+          <video:content_loc>https://www.jogodenegro.pt/vd/video1_AdobeExpress.mp4</video:content_loc>
+        </video:video>
        <lastmod>${date}</lastmod>      
      </url>
    </urlset>
