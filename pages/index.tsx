@@ -73,7 +73,7 @@ export function HeaderPhone({}: any) {
   return (
     <div ref={headerMobileRef} className='fixed flex justify-between md:hidden bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c] p-4'>
         <div className='w-auto flex items-center select-none'>
-          <h1 onClick={() => scrollToTop()} className='text-white text-2xl font-bold uppercase cursor-pointer'>Jogo de Negro</h1>
+          <h1 onClick={() => scrollToTop()} className='text-white text-2xl font-bold uppercase cursor-pointer'>ACDR Jogo de Negro</h1>
         </div>
 
         <div className="w-auto flex items-center select-none">
@@ -117,7 +117,7 @@ export function Header() {
         <div className='w-[100%] m-auto flex justify-between'>
           
           <div className='w-auto flex items-center px-12 select-none'>
-            <h1 onClick={() => scrollToTop()} className='text-white text-3xl font-bold uppercase cursor-pointer'>Jogo de Negro</h1>
+            <h1 onClick={() => scrollToTop()} className='text-white text-3xl font-bold uppercase cursor-pointer'>ACDR Jogo de Negro</h1>
           </div>
 
           <ul className='flex justify-center items-center w-auto'>
@@ -162,28 +162,28 @@ export function Hero({data}: any) {
           <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2 shadow-md md:-translate-y-[50%] md:-mb-[20rem] lg:-mb-[16rem]'>
             
             <div className='bg-gray-50 bg-opacity-90 px-8 py-16 flex flex-col items-center justify-center' >
-              <h1 className='text-3xl font-bold text-gray-700 uppercase mb-10 text-center'>{data[0]?.title}</h1>
+              <h2 className='text-3xl font-bold text-gray-700 uppercase mb-10 text-center'>{data[0]?.title}</h2>
               <p className='text-gray-700 text-center font-sm'>
                 {data[0]?.description}
               </p>
             </div>
 
             <div className='bg-[#f97416b9] px-8 py-16 flex flex-col items-center justify-center'>
-              <h1 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[1]?.title}</h1>
+              <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[1]?.title}</h2>
               <p className='text-white text-center font-sm'>
                 {data[1]?.description}
               </p>
             </div>
 
             <div className='bg-[#45b29dd9] px-8 py-16 flex flex-col items-center justify-center'>
-              <h1 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[2]?.title}</h1>
+              <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[2]?.title}</h2>
               <p className='text-white text-center font-sm'>
                 {data[2]?.description}              
               </p>
             </div>
 
             <div className='bg-[#254151d9] px-8 py-16 flex flex-col items-center justify-center' >
-              <h1 className='text-3xl font-bold text-white uppercase mb-10 text-center'>Queres Experiemntar?</h1>
+              <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>Queres Experiemntar?</h2>
               <button className='rounded-md cursor-auto shadow-md hover:bg-opacity-60 hover:text-[#254151] duration-500 bg-white text-[#254151d9]  p-4 text-base tracking-wide font-bold uppercase' id='sobre'>Encontra o local ideal para ti!</button>              
             </div>
           </div>
@@ -228,7 +228,7 @@ export function Espacos({data}: any) {
   return (
       <section className='mb-12' id='espacos'>
           <div className='relative  md:w-[95%] lg:w-[70%] m-auto pt-20'>
-              <h1 className='text-3xl font-bold text-blue-900 uppercase mb-8 text-center'>Onde nos podes encontrar</h1>
+              <h3 className='text-3xl font-bold text-blue-900 uppercase mb-8 text-center'>Onde nos podes encontrar</h3>
               <h4 className='mb-10 text-center text-base tracking-wider px-8 md:p-0'>Vé o que fica mais acessivel, para conseguires vir treinar!</h4>
 
               <div className='flex flex-wrap items-center justify-center md:justify-between '>
@@ -251,7 +251,7 @@ export function Separator() {
 
           <div className='relative w-[5%]  h-[150px] z-0 bg-gray-100 '></div>
           <div className='relative w-[90%] h-[150px] z-0 bg-transparent flex justify-center items-center px-4 md:p-0'>
-              <h1 className='md:text-2xl text-white uppercase font-bold tracking-wide md:mr-8'>Ainda estás com dúvidas?</h1>
+              <h3 className='md:text-2xl text-white uppercase font-bold tracking-wide md:mr-8'>Ainda estás com dúvidas?</h3>
               
               <button className='bg-white p-4 cursor-auto rounded-full text-blue-600 text-sm font-bold uppercase tracking-wider md:ml-8 hover:bg-gray-100'>Fala Connosco</button>
           </div>
@@ -286,7 +286,7 @@ export function Servicos({data}: any) {
   return (
       <section className='mb-12' id='servicos'>
           <div className='relative  md:w-[95%] lg:w-[70%] m-auto pt-20'>
-              <h1 className='text-3xl font-bold text-blue-900 uppercase text-center mb-8'>Nossos trabalhos</h1>
+              <h3 className='text-3xl font-bold text-blue-900 uppercase text-center mb-8'>Nossos trabalhos</h3>
               <h4 className='mb-10 text-center text-base tracking-wider px-12 md:p-0'>Caso tenha algum interesse não exite em nos contactar!</h4>
 
               <div className='flex flex-wrap items-center justify-center md:justify-between '>
@@ -354,7 +354,7 @@ export function Contactos() {
                     <h2 className='text-red-600 font-normal text-lg border-0 border-red-600 mt-4 mb-8 rounded-md'>{error}</h2>: ''
                 }     
                 
-                <h1 className='text-lg md:text-2xl mb-4 font-bold uppercase text-gray-700'>Tira a tua duvida</h1>
+                <h3 className='text-lg md:text-2xl mb-4 font-bold uppercase text-gray-700'>Tira a tua duvida</h3>
   
                 <input type="text" name='from_name' placeholder='Nome' className='my-4 p-4 rounded-md shadow-md outline-gray-700' required/>
                 <input type="email" name="from_email" placeholder='Email' className='my-4 p-4 rounded-md shadow-md outline-gray-700' required/>
