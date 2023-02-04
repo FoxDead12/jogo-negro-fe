@@ -163,7 +163,7 @@ export function Hero({data}: any) {
 
           <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2 shadow-md md:-translate-y-[50%] md:-mb-[20rem] lg:-mb-[16rem]'>
             
-            <div className='bg-gray-50 bg-opacity-90 px-8 py-0 flex flex-col items-center justify-center' >
+            <div className='bg-gray-50 bg-opacity-90 px-8 py-4 flex flex-col items-center justify-center' >
               <h2 className='text-3xl font-bold text-gray-700 uppercase mb-10 text-center'>{data[0]?.title}</h2>
               <p className='text-gray-700 text-left font-sm'>
                 {
@@ -173,7 +173,7 @@ export function Hero({data}: any) {
               </p>
             </div>
 
-            <div className='bg-[#f97416b9] px-8 py-6 flex flex-col items-center justify-center'>
+            <div className='bg-[#f97416b9] px-8 py-4 flex flex-col items-center justify-center'>
               <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[1]?.title}</h2>
               <p className='text-white text-left font-sm'>
                 {parse(data[1]?.description || "")}
