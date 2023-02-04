@@ -161,7 +161,7 @@ export function Hero({data}: any) {
         <video about="Jogo de Negro" src='/vd/video1_AdobeExpress.mp4' autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' ></video>
         <div className='relative md:w-[95%] lg:w-[70%] m-auto'>
 
-          <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2  md:-translate-y-[30%] md:-mb-[20rem] lg:-mb-[16rem]'>
+          <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 -mb-[400px] md:grid-rows-2  md:-translate-y-[30%] md:-mb-[20rem] lg:-mb-[16rem]'>
             
             <div className='bg-gray-50  px-8 py-8 flex flex-col items-center justify-start' >
               <h2 className='text-3xl font-bold text-gray-700 uppercase mb-10 text-center'>{data[0]?.title}</h2>
