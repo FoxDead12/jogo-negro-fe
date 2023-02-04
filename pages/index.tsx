@@ -161,9 +161,9 @@ export function Hero({data}: any) {
         <video about="Jogo de Negro" src='/vd/video1_AdobeExpress.mp4' autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' ></video>
         <div className='relative md:w-[95%] lg:w-[70%] m-auto'>
 
-          <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2 shadow-md md:-translate-y-[50%] md:-mb-[20rem] lg:-mb-[16rem]'>
+          <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2  md:-translate-y-[30%] md:-mb-[20rem] lg:-mb-[16rem]'>
             
-            <div className='bg-gray-50 bg-opacity-90 px-8 py-6 flex flex-col items-center justify-start' >
+            <div className='bg-gray-50  px-8 py-8 flex flex-col items-center justify-start' >
               <h2 className='text-3xl font-bold text-gray-700 uppercase mb-10 text-center'>{data[0]?.title}</h2>
               <p className='text-gray-700 text-left font-sm'>
                 {
@@ -173,25 +173,27 @@ export function Hero({data}: any) {
               </p>
             </div>
 
-            <div className='bg-[#f97416b9] px-8 py-6 flex flex-col items-center justify-start'>
+            <div className='bg-[#f97416] px-8 py-8 flex flex-col items-center justify-start'>
               <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[1]?.title}</h2>
               <p className='text-white text-left font-sm'>
                 {parse(data[1]?.description || "")}
               </p>
             </div>
 
-            <div className='bg-[#45b29dd9] px-8 py-6 flex flex-col items-center justify-start'>
+            <div className='bg-[#45b29dce] px-8 py-6 flex flex-col items-center justify-center h-[400px]'>
               <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[2]?.title}</h2>
               <p className='text-white text-left font-sm'>
                 {parse(data[2]?.description || "")}
               </p>
             </div>
 
-            <div className='bg-[#254151d9] px-8 py-6 flex flex-col items-center justify-start' >
+            <div className='bg-[#254151d9] px-8 py-6 flex flex-col items-center justify-center h-[400px]' >
               <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>Queres Experiemntar?</h2>
               <button className='rounded-md cursor-auto shadow-md hover:bg-opacity-60 hover:text-[#254151] duration-500 bg-white text-[#254151d9]  p-4 text-base tracking-wide font-bold uppercase' id='sobre'>Encontra o local ideal para ti!</button>              
             </div>
           </div>
+
+
 
         </div>
     </main>
