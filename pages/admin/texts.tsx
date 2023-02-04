@@ -238,7 +238,7 @@ function Menu({data, close, mainUrl}: any) {
 
                             <div className="flex items-start bg-gray-100 bg-opacity-80 my-2 p-3 rounded-lg">
                                 <RxTextAlignJustify className="text-2xl text-gray-900 opacity-25 stroke-none " />
-                                <textarea name="description" id="description" maxLength={250} cols={20} rows={10} placeholder="Descrição" defaultValue={data.description} className="autofill:bg-transparent bg-transparent border-none outline-none text-base font-light resize-none"></textarea>
+                                <textarea name="description" id="description" maxLength={3500} cols={20} rows={10} placeholder="Descrição" defaultValue={data.description} className="autofill:bg-transparent bg-transparent border-none outline-none text-base font-light resize-none"></textarea>
                             </div>
                             
                             <div className="flex items-center bg-opacity-80 m-0 p-3 rounded-full">
@@ -372,7 +372,7 @@ function Add({close, mainUrl}: any) {
 
                         <div className="flex items-start bg-gray-100 bg-opacity-80 my-2 p-3 rounded-lg">
                             <RxTextAlignJustify className="text-2xl text-gray-900 opacity-25 stroke-none " />
-                            <textarea name="description" id="description" maxLength={250} cols={20} rows={10} placeholder="Descrição" className="autofill:bg-transparent bg-transparent border-none outline-none ml-2 text-base font-light resize-none"></textarea>
+                            <textarea name="description" id="description" maxLength={3500} cols={20} rows={10} placeholder="Descrição" className="autofill:bg-transparent bg-transparent border-none outline-none ml-2 text-base font-light resize-none"></textarea>
                         </div>
 
                         <div className="flex items-center bg-opacity-80 m-0 p-3 rounded-full">

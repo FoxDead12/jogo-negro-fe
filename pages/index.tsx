@@ -4,9 +4,9 @@ import { Context } from "vm";
 import Image from "next/image";
 import Head from "next/head";
 import { AiOutlineClose, AiOutlineHome, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
-import { CiLocationOn } from "react-icons/ci";
 import { BiTask } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
+import parse from 'html-react-parser';
 
 const myLoader = ({ src, width, height}: any) => {
   return src;
@@ -122,16 +122,16 @@ export function Header() {
 
           <ul className='flex justify-center items-center w-auto'>
             <li onClick={() => scrollToElement("sobre")} className='mx-4 text-white font-base text-base cursor-pointer hover:text-blue-400 transition-colors duration-700 '>
-              <h4>Sobre Nós</h4>
+              <h2>Sobre Nós</h2>
             </li>
             <li onClick={() => scrollToElement("espacos")} className='mx-4 text-white font-base text-base cursor-pointer hover:text-blue-400 transition-colors duration-700 '>
-              <h4>Espaços</h4>
+              <h2>Espaços</h2>
             </li>
             <li onClick={() => scrollToElement("servicos")} className='mx-4 text-white font-base text-base cursor-pointer hover:text-blue-400 transition-colors duration-700 '>
-              <h4>Serviços</h4>
+              <h2>Serviços</h2>
             </li>
             <li onClick={() => scrollToElement("contactos")} className='mx-4 text-white font-base text-base cursor-pointer hover:text-blue-400 transition-colors duration-700 '>
-              <h4>Contactos</h4>
+              <h2>Contactos</h2>
             </li>
           </ul>
 
@@ -154,6 +154,8 @@ export function Hero({data}: any) {
     data[2]
   ]
 
+
+
   return (
     <main className='relative flex flex-col z-0 '>
         <video about="Jogo de Negro" src='/vd/video1_AdobeExpress.mp4' autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' ></video>
@@ -164,21 +166,24 @@ export function Hero({data}: any) {
             <div className='bg-gray-50 bg-opacity-90 px-8 py-16 flex flex-col items-center justify-center' >
               <h2 className='text-3xl font-bold text-gray-700 uppercase mb-10 text-center'>{data[0]?.title}</h2>
               <p className='text-gray-700 text-center font-sm'>
-                {data[0]?.description}
+                {
+                  parse(data[0]?.description || "")
+                }
+              
               </p>
             </div>
 
             <div className='bg-[#f97416b9] px-8 py-16 flex flex-col items-center justify-center'>
               <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[1]?.title}</h2>
               <p className='text-white text-center font-sm'>
-                {data[1]?.description}
+                {parse(data[1]?.description || "")}
               </p>
             </div>
 
             <div className='bg-[#45b29dd9] px-8 py-16 flex flex-col items-center justify-center'>
               <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>{data[2]?.title}</h2>
               <p className='text-white text-center font-sm'>
-                {data[2]?.description}              
+                {parse(data[2]?.description || "")}
               </p>
             </div>
 
