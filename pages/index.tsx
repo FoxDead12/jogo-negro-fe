@@ -71,7 +71,7 @@ export function HeaderPhone({}: any) {
   }
 
   return (
-    <div ref={headerMobileRef} className='fixed flex justify-between md:hidden bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c] p-4'>
+    <div ref={headerMobileRef} className='fixed flex justify-between lg:hidden bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c] p-4'>
         <div className='w-auto flex items-center select-none'>
           <h1 onClick={() => scrollToTop()} className='text-white text-2xl font-bold uppercase cursor-pointer'>ACDR Jogo de Negro</h1>
         </div>
@@ -113,7 +113,7 @@ export function Header() {
 
 
   return (
-    <header ref={headerRef} className='fixed hidden md:flex bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c]'>
+    <header ref={headerRef} className='fixed hidden lg:flex bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c]'>
         <div className='w-[100%] m-auto flex justify-between'>
           
           <div className='w-auto flex items-center px-12 select-none'>
@@ -161,7 +161,7 @@ export function Hero({data}: any) {
         <video about="Jogo de Negro" src='/vd/video1_AdobeExpress.mp4' autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' ></video>
         <div className='relative md:w-[95%] lg:w-[70%] m-auto'>
 
-          <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2  md:-translate-y-[30%] md:-mb-[20rem] lg:-mb-[16rem]'>
+          <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2  md:-translate-y-[10%] md:-mb-[10%] lg:-mb-[5%]'>
             
             <div className='bg-gray-50  px-8 py-8 flex flex-col items-center justify-start' >
               <h2 className='text-3xl font-bold text-gray-700 uppercase mb-10 text-center'>{data[0]?.title}</h2>
@@ -246,7 +246,7 @@ export function Espacos({data}: any) {
   )
 }
 
-export function Separator() {
+export function Separator() {30
     
 
   return (
@@ -257,9 +257,8 @@ export function Separator() {
 
 
           <div className='relative w-[5%]  h-[150px] z-0 bg-gray-100 '></div>
-          <div className='relative w-[90%] h-[150px] z-0 bg-transparent flex justify-center items-center px-4 md:p-0'>
+          <div className='relative w-[90%] h-[150px] z-0 bg-transparent flex flex-col md:flex-row justify-around md:justify-center items-center px-4 md:p-0'>
               <h3 className='md:text-2xl text-white uppercase font-bold tracking-wide md:mr-8'>Ainda estás com dúvidas?</h3>
-              
               <button className='bg-white p-4 cursor-auto rounded-full text-blue-600 text-sm font-bold uppercase tracking-wider md:ml-8 hover:bg-gray-100'>Fala Connosco</button>
           </div>
           <div className='relative w-[5%]  h-[150px] z-0 bg-gray-100 '></div>
@@ -379,10 +378,12 @@ export function Contactos() {
       <section className='rleative flex flex-col items-center justify-center bg-gray-800 mt-24 p-4' id='contactos'>
           <Form />
 
-          <div className='relative md:w-[95%] lg:w-[70%] m-auto mt-20 pt-12 flex items-start justify-around border-t-[1px] flex-wrap'>
+          <div className='relative sm:w-[95%] md:w-[70%] m-auto mt-20 pt-12 flex items-start justify-around border-t-[1px] flex-col xl:flex-row'>
 
-              <div className='mt-8'>
-                  <img src="/img/logo.png" alt="Jogo de Negro" className='w-[170px] h-[170px] bg-white rounded-full overflow-hidden' />
+              <div className='mt-8 flex'>
+                  <img src="/img/logo.png" alt="Jogo de Negro" className='w-[100px] h-[100px] bg-white rounded-full overflow-hidden mx-2 shadow-md shadow-gray-900' />
+                  <img src="/img/associacao.jpg" alt="Jogo de Negro" className='w-[100px] h-[100px] bg-white rounded-full overflow-hidden mx-2 shadow-md shadow-gray-900' />
+                  <img src="/img/fitdance.jpg" alt="Jogo de Negro" className='w-[100px] h-[100px] bg-white rounded-full overflow-hidden mx-2 shadow-md shadow-gray-900' />
               </div>
 
               <ul className='mt-8'>
