@@ -158,7 +158,12 @@ export function Hero({data}: any) {
 
   return (
     <main className='relative flex flex-col z-0 '>
-        <video about="Jogo de Negro" src='/vd/video1_AdobeExpress.mp4' autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' ></video>
+        <video about="Jogo de Negro"  autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' >
+          <source src="https://dl.dropboxusercontent.com/s/faikyrchxz9o3pg/video1_AdobeExpress.mp4?dl=0"/>
+        </video>
+        
+        {/* <iframe src="https://onedrive.live.com/embed?cid=1EFFE290FA9D3016&resid=1EFFE290FA9D3016%2124689&authkey=AL9NsU8c6yOCKB8" width="320" height="180" frameborder="0" scrolling="no" allowfullscreen></iframe> */}
+        
         <div className='relative md:w-[95%] lg:w-[70%] m-auto'>
 
           <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2  md:-translate-y-[10%] md:-mb-[10%] lg:-mb-[5%]'>
