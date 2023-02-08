@@ -395,6 +395,7 @@ export function Contactos() {
                   <h4 className='text-2xl text-gray-100 uppercase font-bold mb-4'>Conecte-se conosco</h4>
                   <li className='text-gray-50 text-base leading-8 '><a target={"_blank"} href="https://www.facebook.com/GrupoCapoeiraJogodeNegro">Facebook</a></li>
                   <li className='text-gray-50 text-base leading-8 '><a target={"_blank"} href="https://www.instagram.com/jogo_de_negro/">Instagram</a></li>
+                  <li className='text-gray-50 text-base leading-8 '><a target={"_blank"} href="https://www.youtube.com/@acdrjogodenegro6664">Youtube</a></li>
               </ul>
 
           </div>
