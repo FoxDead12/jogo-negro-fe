@@ -158,7 +158,7 @@ export function Hero({data}: any) {
 
   return (
     <main className='relative flex flex-col z-0 '>
-        <video about="Jogo de Negro" src="/vd/video.mp4" autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' >
+        <video about="Jogo de Negro" src="/vd/video.mp4" autoPlay={true} loop={true} muted={true} playsInline={true} className='relative w-full h-[110vh] object-cover -z-10' >
         </video>
 
         <div className='relative md:w-[95%] lg:w-[70%] m-auto'>
@@ -294,8 +294,8 @@ export function Servicos({data}: any) {
   return (
       <section className='mb-12' id='servicos'>
           <div className='relative  md:w-[95%] lg:w-[70%] m-auto pt-20'>
-              <h3 className='text-3xl font-bold text-blue-900 uppercase text-center mb-8'>Nossos trabalhos</h3>
-              <h4 className='mb-10 text-center text-base tracking-wider px-12 md:p-0'>Caso tenha algum interesse não exite em nos contactar!</h4>
+              <h3 className='text-3xl font-bold text-blue-900 uppercase text-center mb-8'>Nosso trabalho</h3>
+              <h4 className='mb-10 text-center text-base tracking-wider px-12 md:p-0'>Caso tenhas algum interesse não hesite em nos contactar!</h4>
 
               <div className='flex flex-wrap items-center justify-center md:justify-between '>
                   {loadServices()}
