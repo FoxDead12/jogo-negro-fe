@@ -13,7 +13,7 @@ const myLoader = ({ src, width, height}: any) => {
 }
 
 export default function Home({spaces, services, texts}: any) {
-    
+
   return (
 
     <>
@@ -26,7 +26,7 @@ export default function Home({spaces, services, texts}: any) {
         <meta name="keywords" content="Capoeira,Jogo de Negro,Treino,Porto,Jogar, Roda"></meta>
         <meta charSet="UTF-8"></meta>
         <meta name="viewport" content="width=device-width" initial-scale="1" />
-        <meta name="robots" content="index, follow" /> 
+        <meta name="robots" content="index, follow" />
       </Head>
 
         <div className='relative flex flex-col w-full h-screen bg-gray-100 z-0'>
@@ -66,7 +66,7 @@ export function HeaderPhone({}: any) {
   }
 
   const scrollToTop = () => {
-    
+
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
@@ -107,7 +107,7 @@ export function Header() {
   }
 
   const scrollToTop = () => {
-    
+
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
@@ -115,7 +115,7 @@ export function Header() {
   return (
     <header ref={headerRef} className='fixed hidden lg:flex bg-blue-600 left-0 top-0 w-full z-50 shadow-md shadow-[#0000002c]'>
         <div className='w-[100%] m-auto flex justify-between'>
-          
+
           <div className='w-auto flex items-center px-12 select-none'>
             <h1 onClick={() => scrollToTop()} className='text-white text-3xl font-bold uppercase cursor-pointer'>ACDR Jogo de Negro</h1>
           </div>
@@ -158,20 +158,20 @@ export function Hero({data}: any) {
 
   return (
     <main className='relative flex flex-col z-0 '>
-        <video about="Jogo de Negro" src="https://dl.dropboxusercontent.com/s/25eznb8qh28yxjq/video1_AdobeExpress.mov?dl=0" autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' >
+        <video about="Jogo de Negro" src="/vd/video1_AdobeExpress.mov" autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' >
         </video>
-                
+
         <div className='relative md:w-[95%] lg:w-[70%] m-auto'>
 
           <div className='relative w-full h-auto grid-rows-4 md:grid grid-cols-2 md:grid-rows-2  md:-translate-y-[10%] md:-mb-[10%] lg:-mb-[5%]'>
-            
+
             <div className='bg-gray-50  px-8 py-8 flex flex-col items-center justify-start' >
               <h2 className='text-3xl font-bold text-gray-700 uppercase mb-10 text-center'>{data[0]?.title}</h2>
               <p className='text-gray-700 text-left font-sm'>
                 {
                   parse(data[0]?.description || "")
                 }
-              
+
               </p>
             </div>
 
@@ -191,7 +191,7 @@ export function Hero({data}: any) {
 
             <div className='bg-[#254151d9] px-8 py-6 flex flex-col items-center justify-center h-[400px]' >
               <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>Queres Experiemntar?</h2>
-              <button className='rounded-md cursor-auto shadow-md hover:bg-opacity-60 hover:text-[#254151] duration-500 bg-white text-[#254151d9]  p-4 text-base tracking-wide font-bold uppercase' id='sobre'>Encontra o local ideal para ti!</button>              
+              <button className='rounded-md cursor-auto shadow-md hover:bg-opacity-60 hover:text-[#254151] duration-500 bg-white text-[#254151d9]  p-4 text-base tracking-wide font-bold uppercase' id='sobre'>Encontra o local ideal para ti!</button>
             </div>
           </div>
 
@@ -203,7 +203,7 @@ export function Hero({data}: any) {
 }
 
 export function Espacos({data}: any) {
-    
+
   const loadSpaces = () => {
 
       return data?.map((el: any, i: number) => {
@@ -216,14 +216,14 @@ export function Espacos({data}: any) {
 
     return (
         <div className='relative  my-10 rounded-sm overflow-hidden max-w-[300px] h-auto'>
-            
+
             <img alt="" />
             <Image loader={myLoader} src={data.imageUrl} alt={data.name} width={300} height={300} className='object-cover w-[300px] h-[300px]'/>
 
             <div className='border-[1.5px] border-gray-300 p-4 flex flex-col pt-8'>
                 <h2 className='text-blue-900 text-xl font-bold text-center tracking-wide'>{data.name}</h2>
                 <h3 className='text-gray-900 text-base font-light text-center tracking-normal mt-6'>{data.location}</h3>
-                
+
                 <div className='flex items-center justify-center relative mt-12'>
                     <a href={data.mapsUrl} target={"_blank"} className='relative py-4 px-10 text-gray-200 uppercase font-bold bg-blue-900 rounded-full shadow-sm tracking-wide'>
                         Vem nos Visitar
@@ -233,7 +233,7 @@ export function Espacos({data}: any) {
         </div>
     )
   }
-  
+
   return (
       <section className='mb-12' id='espacos'>
           <div className='relative  md:w-[95%] lg:w-[70%] m-auto pt-20'>
@@ -249,11 +249,11 @@ export function Espacos({data}: any) {
 }
 
 export function Separator() {30
-    
+
 
   return (
       <div className='relative w-[100%] flex p-0 m-auto -z-20'>
-          
+
           <img src="/img/separator.jpg" alt="" className='fixed w-full h-[100vh] left-0 bottom-0 object-cover -z-10 blur-[2px]'/>
           <div className='absolute w-full h-full left-0 bottom-0 bg-blue-600 bg-opacity-70'></div>
 
@@ -276,14 +276,14 @@ export function Servicos({data}: any) {
   const loadServices = () => {
 
       return data.map((el: any, i: number) => {
-          
+
           return <Service data={el} key={i}/>
       })
   }
 
   const Service = ({data}: any) => {
     return (
-  
+
         <div className='my-10 '>
             <Image loader={myLoader} src={data.imageUrl} alt={data.name} width={300} height={300} className='w-[300px] h-[300px] object-cover rounded-sm' />
             <h2 className='text-xl font-medium text-blue-900 text-center py-4 border-[1.5px] border-t-0 border-gray-300 tracking-wide'>{data.name}</h2>
@@ -306,70 +306,70 @@ export function Servicos({data}: any) {
 }
 
 export function Contactos() {
-        
+
   const Form = () => {
 
     const [isFetching, setFetching] = useState(false);
     const [error, setError] = useState("");
     const [sucess, setSucess] = useState("")
-  
+
     const onFormSubmit = (e: FormEvent) => {
-  
+
         e.preventDefault();
-  
+
         setFetching(true);
         setError("");
         setSucess("");
-  
+
         emailjs.sendForm('service_8kjrn8i', 'template_g7ucczx', e.target as any, '2B4WCfsi8-krgrj-1')
         .then((result: any) => {
-            
+
             setSucess("Email Enviado com sucesso!");
             setFetching(false);
-  
+
             const target = e.target as any;
             target.reset();
-  
+
         }, (error: any) => {
-  
+
             setError("Ocorreu algum problema a enviar, tente de novo!")
             setFetching(false);
         });
-        
+
     }
-  
+
     return (
-  
+
         <>
             {
                 isFetching === true ?
                     <div className='fixed w-screen h-screen bg-gray-700 bg-opacity-40 z-[100] left-0 top-0 flex items-center justify-center'>
-                    
+
                         <div className='w-12 h-12 border-4 border-t-blue-800 border-b-blue-800 border-l-transparent border-r-transparent rounded-full animate-spin'></div>
-  
+
                     </div>
                 : ''
             }
             <form onSubmit={onFormSubmit} className='bg-gray-200 mt-8 p-4 w-full max-w-[600px] rounded-md shadow-md shadow-gray-500 flex flex-col justify-between text-center'>
-                
+
                 {
                     sucess != "" ?
                     <h2 className='text-green-600 font-normal text-lg border-0 border-green-600 mt-4 mb-8 rounded-md'>{sucess}</h2> : ''
                 }
-  
+
                 {
                     error != "" ?
                     <h2 className='text-red-600 font-normal text-lg border-0 border-red-600 mt-4 mb-8 rounded-md'>{error}</h2>: ''
-                }     
-                
+                }
+
                 <h3 className='text-lg md:text-2xl mb-4 font-bold uppercase text-gray-700'>Tira a tua duvida</h3>
-  
+
                 <input type="text" name='from_name' placeholder='Nome' className='my-4 p-4 rounded-md shadow-md outline-gray-700' required/>
                 <input type="email" name="from_email" placeholder='Email' className='my-4 p-4 rounded-md shadow-md outline-gray-700' required/>
                 <input type="number" name="from_phone" placeholder='Telemóvel' maxLength={9} minLength={9} className='my-4 p-4 rounded-md shadow-md outline-gray-700 '/>
-  
+
                 <textarea name="message" cols={30} rows={8} placeholder='Mensagem' className='my-4 p-4 rounded-md shadow-md outline-gray-900 resize-none' required></textarea>
-  
+
                 <button type='submit' className='bg-gray-700 p-4 text-base text-white uppercase font-bold rounded-md shadow-md disabled:bg-gray-500'>Enviar</button>
             </form>
         </>
