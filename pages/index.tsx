@@ -362,7 +362,7 @@ export function Contactos() {
                     <h2 className='text-red-600 font-normal text-lg border-0 border-red-600 mt-4 mb-8 rounded-md'>{error}</h2>: ''
                 }
 
-                <h3 className='text-lg md:text-2xl mb-4 font-bold uppercase text-gray-700'>Tira a tua duvida</h3>
+                <h3 className='text-lg md:text-2xl mb-4 font-bold uppercase text-gray-700'>Fale connosco</h3>
 
                 <input type="text" name='from_name' placeholder='Nome' className='my-4 p-4 rounded-md shadow-md outline-gray-700' required/>
                 <input type="email" name="from_email" placeholder='Email' className='my-4 p-4 rounded-md shadow-md outline-gray-700' required/>
@@ -389,12 +389,12 @@ export function Contactos() {
               </div>
 
               <ul className='mt-8'>
-                  <h4 className='text-2xl text-gray-100 uppercase font-bold mb-4'>Contate-nos</h4>
+                  <h4 className='text-2xl text-gray-100 uppercase font-bold mb-4'>Contacte-nos</h4>
                   <li className='text-gray-50 text-base leading-8 '>Centro Cultural da Senhora da Hora,<br/>Av. Fabril do Norte,<br/>4460-312 Sra. da Hora</li>
               </ul>
 
               <ul className='mt-8'>
-                  <h4 className='text-2xl text-gray-100 uppercase font-bold mb-4'>Conecte-se conosco</h4>
+                  <h4 className='text-2xl text-gray-100 uppercase font-bold mb-4'>Conecte-se connosco</h4>
                   <li className='text-gray-50 text-base leading-8 '><a target={"_blank"} href="https://www.facebook.com/GrupoCapoeiraJogodeNegro">Facebook</a></li>
                   <li className='text-gray-50 text-base leading-8 '><a target={"_blank"} href="https://www.instagram.com/jogo_de_negro/">Instagram</a></li>
                   <li className='text-gray-50 text-base leading-8 '><a target={"_blank"} href="https://www.youtube.com/@acdrjogodenegro6664">Youtube</a></li>
