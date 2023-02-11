@@ -158,7 +158,7 @@ export function Hero({data}: any) {
 
   return (
     <main className='relative flex flex-col z-0 '>
-        <video about="Jogo de Negro" src="/vd/video1_AdobeExpress.mov" autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' >
+        <video about="Jogo de Negro" src="/vd/video.mp4" autoPlay={true} loop={true} muted={true} className='relative w-full h-[110vh] object-cover -z-10' >
         </video>
 
         <div className='relative md:w-[95%] lg:w-[70%] m-auto'>
