@@ -190,7 +190,7 @@ export function Hero({data}: any) {
             </div>
 
             <div className='bg-[#254151d9] px-8 py-6 flex flex-col items-center justify-center h-[400px]' >
-              <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>Queres Experiemntar?</h2>
+              <h2 className='text-3xl font-bold text-white uppercase mb-10 text-center'>Queres Experimentar?</h2>
               <button className='rounded-md cursor-auto shadow-md hover:bg-opacity-60 hover:text-[#254151] duration-500 bg-white text-[#254151d9]  p-4 text-base tracking-wide font-bold uppercase' id='sobre'>Encontra o local ideal para ti!</button>
             </div>
           </div>
